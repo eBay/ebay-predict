@@ -1,0 +1,10 @@
+{
+    "tags": {
+        "ebay-predict": {
+            "renderer": "./src/components/ebay-predict",
+            "@src": "string",
+            "@delay": "string",
+            "@limit": "string"
+        }
+    }
+}

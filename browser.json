@@ -1,0 +1,5 @@
+{
+    "dependencies": [
+        "./src/components/ebay-predict/browser.json"
+    ]
+}
