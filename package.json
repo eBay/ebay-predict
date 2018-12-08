@@ -20,7 +20,7 @@
     "rep": "open coverage/lcov-report/index.html",
     "clean": "rm -rf .cache .test coverage",
     "coverage": "npm run ucov && npm run ftest",
-    "test": "npm run lint && npm run utest && npm run ftest",
+    "test": "npm run lint && npm run utest",
     "all": "npm run clean && npm run test && npm run coverage"
   },
   "dependencies": {},

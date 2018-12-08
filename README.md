@@ -1,4 +1,4 @@
-# ebay-predict
+# ebay-predict [![Build Status](https://travis-ci.com/eBay/ebay-predict.svg?branch=master)](https://travis-ci.com/eBay/ebay-predict)
 
 `ebay-predict` is a simple tag to prefetch static assets from a prediction service
 
