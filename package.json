@@ -1,7 +1,7 @@
 {
   "name": "ebay-predict",
   "description": "A component to prefetch static assets from a prediction service",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Senthil Padmanabhan <https://twitter.com/senthil_hi>",
   "homepage": "https://github.com/eBay/ebay-predict",
   "repository": {
