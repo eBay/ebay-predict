@@ -1,6 +1,6 @@
 # ebay-predict [![Build Status](https://travis-ci.com/eBay/ebay-predict.svg?branch=master)](https://travis-ci.com/eBay/ebay-predict)
 
-`ebay-predict` is a simple tag to prefetch static assets from a prediction service. A prediction service is a server endpoint, that responds with the suggested JSON schema (see [below]()). If the service is not hosted on the same origin as the page, please ensure proper [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) support is enabled. `<ebay-predict>` triggers the prefetch only after the page `load` event, with a provided [delay](#ebay-predict-attributes), to ensure the current page is rendered without any interferance.  
+`ebay-predict` is a simple tag to prefetch static assets from a prediction service. A prediction service is a server endpoint, that responds with the suggested JSON schema (see [below](#json-schema)). If the service is not hosted on the same origin as the page, please ensure proper [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) support is enabled. `<ebay-predict>` triggers the prefetch only after the page `load` event, with a provided [delay](#ebay-predict-attributes), to ensure the current page is rendered without any interferance.  
 
 ## Usage
 1. Install and save the module
@@ -29,7 +29,50 @@ Name | Type | Stateful | Description
 `limit` | String | No | a limit on the number of resources (for each type) to be prefetched. Use caution when prefetching more than 2 resources, as that may contend with current page bandwidth (default: `"2"`)
 
 ## Server response
-Below is the response schema from the prediction service
+Prediction service JSON schema and sample response
+### JSON Schema
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "css": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "js": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "media": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    }
+  }
+}
+```
+### Sample response
 ```json
 {
     "css": ["https://ir.ebaystatic.com/rs/c/br/inception-PMg1-OXo.css", "https://ir.ebaystatic.com/rs/c/br/highlnfe-BTZUdVe3.css"],
