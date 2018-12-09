@@ -20,7 +20,7 @@ npm install ebay-predict --save
 </footer>
 </html>
 ```
-### <ebay-predict> Attributes
+### `<ebay-predict>` Attributes
 
 Name | Type | Stateful | Description
 --- | --- | --- | ---
