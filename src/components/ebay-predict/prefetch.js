@@ -2,14 +2,23 @@
 
 var predictElem = document.querySelector('noscript.ebay-predict');
 
+var requestIdleCallback = window.requestIdleCallback ||
+    function(cb) {
+        return setTimeout(function() {
+            cb();
+        }, 1);
+    };
+
 function prefetch(assets) {
-    assets.forEach(function(asset) {
-        // create a new XHR request
-        var xhr = new XMLHttpRequest();
-        // open the request for the resource to "prefetch"
-        xhr.open('GET', asset, true);
-        // fire!
-        xhr.send();
+    requestIdleCallback(function() {
+        assets.forEach(function(asset) {
+            // create a new XHR request
+            var xhr = new XMLHttpRequest();
+            // open the request for the resource to "prefetch"
+            xhr.open('GET', asset, true);
+            // fire!
+            xhr.send();
+        });
     });
 }
 
