@@ -1,6 +1,6 @@
 'use strict';
 
-var predictElem = document.querySelector('noscript.ebay-predict');
+var predictElem;
 
 var requestIdleCallback = window.requestIdleCallback ||
     function(cb) {
@@ -58,6 +58,7 @@ function callPredictService() {
 
 function init() {
     window.addEventListener('load', function() {
+        predictElem = document.querySelector('noscript.ebay-predict');
         var delay = parseInt(predictElem.dataset.delay, 10) || 200;
         var timeoutID = setTimeout(function() {
             clearTimeout(timeoutID);
