@@ -2,7 +2,7 @@
 
 var predictElem;
 
-var requestIdleCallback = window.requestIdleCallback ||
+var requestIdleCallbackLocal = window.requestIdleCallback ||
     function(cb) {
         return setTimeout(function() {
             cb();
@@ -10,7 +10,7 @@ var requestIdleCallback = window.requestIdleCallback ||
     };
 
 function prefetch(assets) {
-    requestIdleCallback(function() {
+    requestIdleCallbackLocal(function() {
         assets.forEach(function(asset) {
             // create a new XHR request
             var xhr = new XMLHttpRequest();
@@ -59,10 +59,11 @@ function callPredictService() {
 function init() {
     window.addEventListener('load', function() {
         predictElem = document.querySelector('noscript.ebay-predict');
-        var delay = parseInt(predictElem.dataset.delay, 10) || 200;
+        // If requestIdleCallback is present, then ignore the attribute and use min value 1
+        var delay = window.requestIdleCallback ? 1 : (parseInt(predictElem.dataset.delay, 10) || 200);
         var timeoutID = setTimeout(function() {
             clearTimeout(timeoutID);
-            callPredictService();
+            requestIdleCallbackLocal(callPredictService);
         }, delay);
     });
 }
