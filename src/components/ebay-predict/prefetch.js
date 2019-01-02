@@ -59,6 +59,11 @@ function callPredictService() {
 function init() {
     window.addEventListener('load', function() {
         predictElem = document.querySelector('noscript.ebay-predict');
+
+        if (!predictElem) {
+            return;
+        }
+
         // If requestIdleCallback is present, then ignore the attribute and use min value 1
         var delay = window.requestIdleCallback ? 1 : (parseInt(predictElem.dataset.delay, 10) || 200);
         var timeoutID = setTimeout(function() {
